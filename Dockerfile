@@ -45,8 +45,9 @@ RUN <<EOT
     busybox --install -s
     rm -rf /var/lib/apt/lists/* /usr/share/doc
     mkdir -p /data/filestorage /data/blobstorage /data/log /data/cache
-    chown -R /data plone:plone
+    chown -R plone:plone /data
     ln -s /data /app/var
+    ./docker-entrypoint.sh create-site
 EOT
 
 EXPOSE 8080
